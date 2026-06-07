@@ -50,8 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Setup Navigation / Button Handlers
     // -------------------------------------------------------------
     
-    // Join CTA / Portal triggers
-    document.getElementById('cta-join-btn')?.addEventListener('click', () => switchView('register'));
+    // Join CTA is now a native <a> link to Google Form — no JS handler needed
     document.getElementById('portal-login-trigger')?.addEventListener('click', () => switchView('login'));
     document.getElementById('to-login-btn')?.addEventListener('click', (e) => { e.preventDefault(); switchView('login'); });
     document.getElementById('to-register-btn')?.addEventListener('click', (e) => { e.preventDefault(); switchView('register'); });
