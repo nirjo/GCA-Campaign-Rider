@@ -15,9 +15,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="poster-container">
+    <div class="poster-container" id="main-container">
         <!-- Main Content Area -->
-        <main class="content-side">
+        <main class="content-side" id="landing-content">
+            <!-- Top Nav Bar with Login Link -->
+            <div class="top-nav-bar">
+                <button id="portal-login-trigger" class="portal-trigger-btn">RIDER PORTAL LOGIN</button>
+            </div>
+
             <!-- Header section -->
             <header class="header">
                 <span class="sub-title">BECOME OUR</span>
@@ -206,8 +211,493 @@
             </section>
         </main>
 
+        <!-- Registration Form (Hidden by default) -->
+        <main class="content-side hidden" id="register-content">
+            <header class="header">
+                <span class="sub-title">RIDER PORTAL</span>
+                <h1 class="main-title">
+                    <span class="yellow-brush">CREATE</span>
+                    <span class="white-brush">ACCOUNT</span>
+                </h1>
+            </header>
+
+            <form id="register-form" class="portal-form">
+                <div class="form-group">
+                    <label for="reg-fullname">Full Name</label>
+                    <input type="text" id="reg-fullname" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="reg-whatsapp">WhatsApp Number</label>
+                    <input type="tel" id="reg-whatsapp" required placeholder="e.g. 9876543210">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" required placeholder="Create a secure password">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reg-license">Driving License</label>
+                        <select id="reg-license" required>
+                            <option value="">Select Option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-pincode">Pincode</label>
+                        <input type="text" id="reg-pincode" required placeholder="6-digit pincode">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reg-vehicle">Vehicle Make / Model</label>
+                        <select id="reg-vehicle" required>
+                            <option value="">Select Option</option>
+                            <option value="Bike">Bike (Motorcycle)</option>
+                            <option value="Scooter">Scooter (Scooty)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-km">Avg KM Driven Per Day</label>
+                        <select id="reg-km" required>
+                            <option value="">Select Option</option>
+                            <option value="100 - 120km">100 - 120 km</option>
+                            <option value="70 - 100km">70 - 100 km</option>
+                            <option value="40 - 70km">40 - 70 km</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="reg-declare" required>
+                    <label for="reg-declare">I hereby confirm that the information provided above is true and correct to the best of my knowledge.</label>
+                </div>
+                <button type="submit" class="portal-btn">REGISTER NOW</button>
+                <p class="auth-toggle-text">Already have an account? <a href="#" id="to-login-btn">Login here</a></p>
+                <p class="auth-toggle-text"><a href="#" class="to-landing-btn">&larr; Back to Landing Page</a></p>
+            </form>
+        </main>
+
+        <!-- Login Form (Hidden by default) -->
+        <main class="content-side hidden" id="login-content">
+            <header class="header">
+                <span class="sub-title">RIDER PORTAL</span>
+                <h1 class="main-title">
+                    <span class="yellow-brush">RIDER</span>
+                    <span class="white-brush">LOGIN</span>
+                </h1>
+            </header>
+
+            <form id="login-form" class="portal-form">
+                <div class="form-group">
+                    <label for="login-whatsapp">WhatsApp Number</label>
+                    <input type="tel" id="login-whatsapp" required placeholder="Enter WhatsApp number">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="portal-btn">LOG IN</button>
+                <p class="auth-toggle-text">Don't have an account? <a href="#" id="to-register-btn">Register here</a></p>
+                <p class="auth-toggle-text"><a href="#" class="to-landing-btn">&larr; Back to Landing Page</a></p>
+            </form>
+        </main>
+
+        <!-- Dashboard / Portal Area (Hidden by default) -->
+        <main class="content-side hidden" id="dashboard-content">
+            <header class="dashboard-header">
+                <div class="user-welcome">
+                    <span class="user-greeting">WELCOME BACK,</span>
+                    <h2 id="dash-user-name" class="user-name">CAMPAIGN RIDER</h2>
+                </div>
+                <button id="dash-logout-btn" class="logout-btn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    SIGN OUT
+                </button>
+            </header>
+
+            <!-- Horizontal Tabs Navigation -->
+            <nav class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="tab-overview">Overview</button>
+                <button class="tab-btn" data-tab="tab-speedometer">Speedometer</button>
+                <button class="tab-btn" data-tab="tab-profile">Profile</button>
+                <button class="tab-btn" data-tab="tab-withdraw">Withdrawals</button>
+                <button class="tab-btn" data-tab="tab-support">Support</button>
+                <button class="tab-btn" data-tab="tab-security">Security</button>
+            </nav>
+
+            <!-- Tab Contents Container -->
+            <div class="tab-container">
+                
+                <!-- Tab 1: Overview -->
+                <div class="tab-content active" id="tab-overview">
+                    <div class="status-indicator-bar">
+                        <span class="status-label">Campaign Status:</span>
+                        <span id="rider-status-badge" class="status-badge status-active">Active</span>
+                    </div>
+
+                    <!-- Top Grid Stats (Income) -->
+                    <div class="stats-grid primary-stats">
+                        <div class="stat-card yellow-card">
+                            <span class="stat-label">Total Earnings</span>
+                            <span id="stat-total-income" class="stat-val">₹0.00</span>
+                            <span class="stat-desc">Referral + KM Driven</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Current Unpaid</span>
+                            <span id="stat-unpaid-income" class="stat-val">₹0.00</span>
+                            <button id="dash-withdraw-btn" class="stat-action-btn">Request Payout</button>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Driven Earnings</span>
+                            <span id="stat-driven-income" class="stat-val">₹0.00</span>
+                            <span class="stat-desc">Based on verified KM</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Referral Earnings</span>
+                            <span id="stat-referral-income" class="stat-val">₹0.00</span>
+                            <span class="stat-desc">From active partners</span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Grid Stats (Performance) -->
+                    <div class="stats-grid secondary-stats">
+                        <div class="stat-card-mini">
+                            <span class="stat-mini-label">Total KM Driven</span>
+                            <span id="stat-total-km" class="stat-mini-val">0 km</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="stat-mini-label">Last Odometer</span>
+                            <span id="stat-last-odometer" class="stat-mini-val">0 km</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="stat-mini-label">Total Referrals</span>
+                            <span id="stat-total-referrals" class="stat-mini-val">0</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="stat-mini-label">Campaign Ads Run</span>
+                            <span id="stat-ads-run" class="stat-mini-val">0</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="stat-mini-label">Active Partners</span>
+                            <span id="stat-active-partners" class="stat-mini-val">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-welcome-banner">
+                        <h3>Keep Riding, Keep Earning!</h3>
+                        <p>Ensure you submit your speedometer readings regularly to keep your campaigns active and account credited.</p>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Speedometer Submission -->
+                <div class="tab-content" id="tab-speedometer">
+                    <div class="section-title-wrapper">
+                        <h3>Speedometer Proof Submission</h3>
+                        <p>Submit your odometer readings to calculate your payable kilometers.</p>
+                    </div>
+
+                    <form id="speedometer-form" class="portal-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="speedo-prev">Previous Speedometer Reading (KM)</label>
+                                <input type="number" id="speedo-prev" readonly class="readonly-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="speedo-curr">Current Speedometer Reading (KM)</label>
+                                <input type="number" id="speedo-curr" required min="1" placeholder="Enter current reading">
+                            </div>
+                        </div>
+
+                        <!-- Live Calculations Panel -->
+                        <div class="live-calc-panel">
+                            <div class="calc-row">
+                                <span>Difference Distance:</span>
+                                <strong id="calc-diff">0 KM</strong>
+                            </div>
+                            <div class="calc-row">
+                                <span>Accountable Distance:</span>
+                                <strong id="calc-accountable">0 KM</strong>
+                            </div>
+                            <div class="calc-row">
+                                <span>Rate Per Kilometer:</span>
+                                <strong class="yellow-text">₹6.50 / KM</strong>
+                            </div>
+                            <div class="calc-row highlight-row">
+                                <span>Estimated Earnings:</span>
+                                <strong id="calc-est-earnings">₹0.00</strong>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="speedo-img">Upload Speedometer Reading Photo / Proof</label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="speedo-img" accept="image/*" required>
+                                <div class="upload-placeholder">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Click to upload speedometer image</span>
+                                </div>
+                                <img id="speedo-img-preview" class="image-preview hidden" alt="Speedometer Preview">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="portal-btn">SUBMIT SPEEDOMETER PROOF</button>
+                    </form>
+
+                    <div class="history-table-wrapper">
+                        <h4>Submission History</h4>
+                        <div class="table-container-scroll">
+                            <table class="portal-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Prev KM</th>
+                                        <th>Curr KM</th>
+                                        <th>Diff KM</th>
+                                        <th>Earnings</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="speedo-history-tbody">
+                                    <!-- Injected dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Profile Settings -->
+                <div class="tab-content" id="tab-profile">
+                    <div class="section-title-wrapper">
+                        <h3>Rider Profile Details</h3>
+                        <p>View and update your profile information below.</p>
+                    </div>
+
+                    <form id="profile-form" class="portal-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prof-fullname">Full Name</label>
+                                <input type="text" id="prof-fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="prof-whatsapp">WhatsApp Number</label>
+                                <input type="tel" id="prof-whatsapp" readonly class="readonly-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prof-email">Email Address</label>
+                                <input type="email" id="prof-email" placeholder="Enter email address">
+                            </div>
+                            <div class="form-group">
+                                <label for="prof-profession">Profession</label>
+                                <select id="prof-profession">
+                                    <option value="">Select Profession</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Delivery Partner">Delivery Partner</option>
+                                    <option value="Salaried Employee">Salaried Employee</option>
+                                    <option value="Self Employed">Self Employed</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prof-age">Age / Date of Birth</label>
+                                <input type="date" id="prof-age">
+                            </div>
+                            <div class="form-group">
+                                <label for="prof-license">Driving License Number</label>
+                                <input type="text" id="prof-license" placeholder="Enter license number">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prof-pan">PAN Card Number</label>
+                                <input type="text" id="prof-pan" placeholder="Enter 10-digit PAN">
+                            </div>
+                            <div class="form-group">
+                                <label for="prof-aadhar">Aadhar Card Number</label>
+                                <input type="text" id="prof-aadhar" placeholder="Enter 12-digit Aadhar">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prof-address">Residential Address</label>
+                            <textarea id="prof-address" rows="2" placeholder="Enter full address"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prof-pincode">Pincode</label>
+                                <input type="text" id="prof-pincode" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="prof-sponsor">Sponsor / Referral ID</label>
+                                <input type="text" id="prof-sponsor" placeholder="Sponsor ID (optional)">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prof-vehicle">Vehicle Make / Model</label>
+                                <select id="prof-vehicle" required>
+                                    <option value="Bike">Bike (Motorcycle)</option>
+                                    <option value="Scooter">Scooter (Scooty)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="prof-km">Average KM Driven Per Day</label>
+                                <select id="prof-km" required>
+                                    <option value="100 - 120km">100 - 120 km</option>
+                                    <option value="70 - 100km">70 - 100 km</option>
+                                    <option value="40 - 70km">40 - 70 km</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="portal-btn">SAVE PROFILE DETAILS</button>
+                    </form>
+                </div>
+
+                <!-- Tab 4: Withdrawals / Bank -->
+                <div class="tab-content" id="tab-withdraw">
+                    <div class="section-title-wrapper">
+                        <h3>Withdrawals & Bank Account Details</h3>
+                        <p>Submit bank details and view your payment withdrawals history.</p>
+                    </div>
+
+                    <!-- Bank Details Form -->
+                    <form id="bank-form" class="portal-form">
+                        <h4>Bank Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bank-holder">Account Holder Name</label>
+                                <input type="text" id="bank-holder" required placeholder="Enter cardholder name">
+                            </div>
+                            <div class="form-group">
+                                <label for="bank-ifsc">IFSC Code</label>
+                                <input type="text" id="bank-ifsc" required placeholder="e.g. SBIN0001234">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bank-name">Bank Name</label>
+                                <input type="text" id="bank-name" required placeholder="e.g. State Bank of India">
+                            </div>
+                            <div class="form-group">
+                                <label for="bank-branch">Branch</label>
+                                <input type="text" id="bank-branch" required placeholder="Enter bank branch">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bank-number">Account Number</label>
+                            <input type="text" id="bank-number" required placeholder="Enter account number">
+                        </div>
+                        <button type="submit" class="portal-btn btn-secondary">SAVE BANK DETAILS</button>
+                    </form>
+
+                    <div class="history-table-wrapper" style="margin-top: 2rem;">
+                        <h4>Withdrawal History</h4>
+                        <div class="table-container-scroll">
+                            <table class="portal-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Order ID</th>
+                                        <th>Gross Amt</th>
+                                        <th>Fee (5%)</th>
+                                        <th>Net Amt</th>
+                                        <th>Bank Account</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="withdraw-history-tbody">
+                                    <!-- Injected dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Support Tickets -->
+                <div class="tab-content" id="tab-support">
+                    <div class="section-title-wrapper">
+                        <h3>Support & Help Desk</h3>
+                        <p>Create a support ticket to get assistance from our campaign managers.</p>
+                    </div>
+
+                    <form id="ticket-form" class="portal-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ticket-subject">Subject</label>
+                                <input type="text" id="ticket-subject" required placeholder="e.g. Mileage tracking issue">
+                            </div>
+                            <div class="form-group">
+                                <label for="ticket-priority">Priority</label>
+                                <select id="ticket-priority" required>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticket-message">Message</label>
+                            <textarea id="ticket-message" rows="3" required placeholder="Describe your query in detail..."></textarea>
+                        </div>
+                        <button type="submit" class="portal-btn">CREATE NEW TICKET</button>
+                    </form>
+
+                    <div class="history-table-wrapper" style="margin-top: 2rem;">
+                        <h4>Support Tickets History</h4>
+                        <div class="table-container-scroll">
+                            <table class="portal-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Subject</th>
+                                        <th>Priority</th>
+                                        <th>Last Message</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tickets-history-tbody">
+                                    <!-- Injected dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: Security (Change Pwd) -->
+                <div class="tab-content" id="tab-security">
+                    <div class="section-title-wrapper">
+                        <h3>Change Login Password</h3>
+                        <p>Keep your account secure by updating your password regularly.</p>
+                    </div>
+
+                    <form id="security-form" class="portal-form">
+                        <div class="form-group">
+                            <label for="pwd-current">Current Password</label>
+                            <input type="password" id="pwd-current" required placeholder="Enter current password">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd-new">New Password</label>
+                            <input type="password" id="pwd-new" required placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd-confirm">Re-type New Password</label>
+                            <input type="password" id="pwd-confirm" required placeholder="Confirm new password">
+                        </div>
+                        <button type="submit" class="portal-btn">UPDATE LOGIN PASSWORD</button>
+                    </form>
+                </div>
+
+            </div>
+        </main>
+
         <!-- Visual Side (Motorcycle Rider Background) -->
-        <div class="visual-side" role="img" aria-label="Campaign Rider sunset highway city view">
+        <div class="visual-side" id="landing-visual" role="img" aria-label="Campaign Rider sunset highway city view">
             <div class="overlay-gradient"></div>
         </div>
     </div>
